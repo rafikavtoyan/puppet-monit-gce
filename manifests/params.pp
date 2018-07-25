@@ -48,13 +48,13 @@ class monit::params {
       $eventqueue = false
 
       $service_program = '/sbin/service'
-      if versioncmp($::lsbmajdistrelease, '7') < 0 {
-        $init_system = 'sysv'
-      }
-      else {
+      #if versioncmp($::lsbmajdistrelease, '7') < 0 {
+      #  $init_system = 'sysv'
+      #}
+      #else {
         $init_system = 'systemd'
         $systemd_unitdir = '/usr/lib/systemd/system'
-      }
+      #}
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem: ${::operatingsystem}, module ${module_name} only support osfamily Debian and RedHat")
