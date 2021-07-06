@@ -16,18 +16,7 @@ set eventqueue
 set mmonit <%= scope['monit::mmonit_url'] %>
 <% end -%>
 
-set mail-format {
-    from: <%= scope['monit::mailformat_from'] %>
-<% if scope['monit::mailformat_replyto'] -%>
-    reply-to: <%= scope['monit::mailformat_replyto'] %>
-<% end -%>
-<% if scope['monit::mailformat_subject'] -%>
-    subject: <%= scope['monit::mailformat_subject'] %>
-<% end -%>
-<% if scope['monit::mailformat_message'] -%>
-    message: <%= scope['monit::mailformat_message'] %>
-<% end -%>
-}
+
 <% if scope['monit::alerts'] -%>
 
   <%- scope['monit::alerts'].each do |alert| -%>
