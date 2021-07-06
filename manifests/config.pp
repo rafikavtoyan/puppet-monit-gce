@@ -62,12 +62,12 @@ class monit::config {
     )
     validate_array($monit::system_fs)
 
-    monit::check::system {$::fqdn:
-      priority => '10',
-      group    => 'system',
-      order    => 0,
-      tests    => parseyaml(template('monit/system_test_resources.erb')),
-    }
+#    monit::check::system {$::fqdn:
+#      priority => '10',
+#      group    => 'system',
+#      order    => 0,
+#      tests    => parseyaml(template('monit/system_test_resources.erb')),
+#    }
 
     $system_test_fs_defaults = {
       priority => '10',
