@@ -16,9 +16,7 @@ set eventqueue
 set mmonit <%= scope['monit::mmonit_url'] %>
 <% end -%>
 
-
 <% if scope['monit::alerts'] -%>
-
   <%- scope['monit::alerts'].each do |alert| -%>
 set alert <%= alert %>
   <%- end -%>
