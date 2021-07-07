@@ -39,9 +39,7 @@ class monit::config {
   #  ensure  => present,
   #  content => template('monit/conf_file_overrides.erb'),
   #}
-
-
-
+  
   # Additional checks.
   if ($monit::hiera_merge_strategy == 'hiera_hash') {
     $mychecks = hiera_hash('monit::checks', {})
