@@ -34,11 +34,11 @@ class monit::config {
   if $monit::httpserver_ssl {
     validate_absolute_path($monit::httpserver_pemfile)
   }
-  # validate_array($monit::httpserver_allow)
-  #file { "${monit::conf_dir}/00_monit_config":
-  #  ensure  => present,
-  #  content => template('monit/conf_file_overrides.erb'),
-  #}
+  validate_array($monit::httpserver_allow)
+  file { "${monit::conf_dir}/00_monit_config":
+    ensure  => present,
+    content => template('monit/conf_file_overrides.erb'),
+  }
   
   # Additional checks.
   if ($monit::hiera_merge_strategy == 'hiera_hash') {
