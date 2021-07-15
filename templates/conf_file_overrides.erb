@@ -4,38 +4,5 @@ set daemon <%= scope['monit::check_interval'] %>
     with start delay <%= scope['monit::check_start_delay'] %>
 
 set logfile <%= scope['monit::logfile'] %>
-<% if scope['monit::mailserver'] %>
-set mailserver <%= scope['monit::mailserver'] %>
-<% end -%>
-<% if scope['monit::eventqueue'] %>
-set eventqueue
-    basedir <%= scope['monit::eventqueue_basedir'] %>
-    slots <%= scope['monit::eventqueue_slots'] %>
-<% end -%>
-<% if scope['monit::mmonit_url'] %>
-set mmonit <%= scope['monit::mmonit_url'] %>
-<% end -%>
 
-<% if scope['monit::alerts'] -%>
-  <%- scope['monit::alerts'].each do |alert| -%>
-set alert <%= alert %>
-  <%- end -%>
-<% end %>
-<% if scope['monit::httpserver'] -%>
-set httpd
-    port <%= scope['monit::httpserver_port'] %>
-    signature disable
-  <%- if scope['monit::httpserver_bind_address'] -%>
-    use address <%= scope['monit::httpserver_bind_address'] %>
-  <%- end -%>
-  <%- if scope['monit::httpserver_ssl'] and scope['monit::httpserver_pemfile'] -%>
-    ssl enable
-    pemfile <%= scope['monit::httpserver_pemfile'] %>
-  <%- end -%>
-  <%- if scope['monit::httpserver_allow'] -%>
-    <%- scope['monit::httpserver_allow'].each do |allow| -%>
-    allow <%= allow %>
-    <%- end -%>
-  <%- end -%>
-<% end -%>
 
